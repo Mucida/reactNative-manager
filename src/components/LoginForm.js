@@ -8,7 +8,7 @@ class LoginForm extends Component {
     this.props.emailChanged(text);//action creator
   }
 
-  onPasswordChange(text) {
+  onPasswordChanged(text) {
     this.props.passwordChanged(text);//action creator
   }
 
@@ -19,7 +19,7 @@ class LoginForm extends Component {
           <Input
             label="Email"
             placeholder="email@gmail.com"
-            onChangeText={this.onEmailChange.bind(this)}
+            onChangeText={this.onEmailChanged.bind(this)}
             value={this.props.email}
           />
         </CardSection>
@@ -28,7 +28,7 @@ class LoginForm extends Component {
             secureTextEntry
             label="Password"
             placeholder="passowrd"
-            onChangeText={this.onPasswordChange.bind(this)}
+            onChangeText={this.onPasswordChanged.bind(this)}
             valeu={this.props.password}
           />
         </CardSection>
