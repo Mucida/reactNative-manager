@@ -1,4 +1,6 @@
 
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import {
   EMPLOYEE_UPDATE
 } from './types';
@@ -9,3 +11,17 @@ export const employeeUpdate = ({ prop, value }) => {
     payload: { prop, value }
   };
 };
+
+export const employeeCreate = ({ name, phone, shift }) => {
+  const { currentUser } = firebase.auth();
+  return () => { //not dispatching anything, so is not a ReduxThunk
+    firebase.database().ref(`users/${currentUser.uid}/employees`)
+      .push({ name, phone, shift })
+      .then(() => Actions.employeeList()); //1
+  };
+};
+
+/*
+1- path to json datastruct (those are keys)'user/userdId/employees'
+   same of user/123/employees
+*/
